@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busy Oven</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://wallpapercave.com/wp/wp2038160.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .register-form {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            background: transparent;
+            border:2px solid black;
+            border-radius:30px;
+            backdrop-filter:blur(20px);
+            padding:10px 40px 20px 20px;
+            color: white;
+        }
+        .register-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .register-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .register-form input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        .register-form input[type="submit"]:hover {
+            background-color: #218838;
+            padding:10px 40px 20px 20px ;
+        }
+        h5{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form class="register-form" method="post" action="register">
+        {% csrf_token %}
+        <h2>Register</h2>
+        <label for="Email-ID">Email-ID:</label>
+        <input type="email" id="email" name="email" placeholder="Enter Email-ID" required>
+
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username" placeholder="Enter User Name" required>
+    
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="c_password" name="c_password" placeholder="Confirm your password" required>
+
+        <input type="submit" value="Register">
+        <p>Already loged in?<a href="login">login</a></p>
+    {% for message in messages %}
+    <h5>{{message}}</h5>
+    {% endfor %}
+    </form>
+</body>
+</html>
